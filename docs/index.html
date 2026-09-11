@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foil Ledger — card price tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root {
+    --ink: #14151c;
+    --panel: #1b1d27;
+    --panel-raised: #21232f;
+    --hairline: rgba(255,255,255,0.08);
+    --text: #ecebe3;
+    --muted: #8b8e9e;
+    --gold: #d8a93b;
+    --teal: #3fa796;
+    --coral: #e2725b;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+  }
+
+  header {
+    padding: 48px clamp(20px, 5vw, 64px) 32px;
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    max-width: 46ch;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .meta {
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .meta .credits {
+    color: var(--gold);
+  }
+
+  main {
+    padding: 32px clamp(20px, 5vw, 64px) 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  #status {
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  thead th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 0 12px 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  thead th.num, tbody td.num { text-align: right; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--hairline);
+    cursor: pointer;
+    transition: background 120ms ease;
+  }
+
+  tbody tr:hover { background: var(--panel); }
+
+  tbody tr.active { background: var(--panel-raised); }
+
+  tbody td {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+
+  td.name { font-weight: 500; }
+  td.set { color: var(--muted); font-size: 13px; }
+
+  td.price, td.delta {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .delta.up { color: var(--teal); }
+  .delta.down { color: var(--coral); }
+  .delta.flat { color: var(--muted); }
+
+  #detail {
+    display: none;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    padding: 24px clamp(16px, 3vw, 32px);
+  }
+
+  #detail.open { display: block; }
+
+  #detail h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+  }
+
+  #detail .sub {
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 20px;
+  }
+
+  #chart-wrap {
+    height: 320px;
+  }
+
+  .empty-state {
+    border: 1px solid var(--hairline);
+    padding: 48px 32px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .empty-state code {
+    background: var(--panel);
+    padding: 2px 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 24px clamp(20px, 5vw, 64px) 48px;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  footer a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Foil Ledger</h1>
+    <p>Daily TCGPlayer market prices for a tracked set of cards, pulled once a day and logged over time.</p>
+  </div>
+  <div class="meta" id="run-meta">loading run info…</div>
+</header>
+
+<main>
+  <div id="status">Loading data…</div>
+
+  <table id="ledger" style="display:none">
+    <thead>
+      <tr>
+        <th>Card</th>
+        <th>Set</th>
+        <th class="num">Market</th>
+        <th class="num">1-day Δ</th>
+        <th class="num">7-day Δ</th>
+      </tr>
+    </thead>
+    <tbody id="ledger-body"></tbody>
+  </table>
+
+  <div id="detail">
+    <h2 id="detail-name"></h2>
+    <div class="sub" id="detail-sub"></div>
+    <div id="chart-wrap"><canvas id="chart"></canvas></div>
+  </div>
+</main>
+
+<footer>
+  Data via <a href="https://www.pokemonpricetracker.com" target="_blank" rel="noopener">pokemonpricetracker.com</a>.
+  Prices are estimates, not affiliated with Nintendo, TPC, TCGplayer, eBay or PSA.
+  Updated automatically once a day by a scheduled job — this page just reads the latest commit.
+</footer>
+
+<script>
+const DATA_DIR = 'data';
+let historyByCard = {};
+let chart = null;
+
+function fmtMoney(v) {
+  if (v === null || v === undefined || v === '') return '—';
+  return '$' + Number(v).toFixed(2);
+}
+
+function pctDelta(newer, older) {
+  if (newer == null || older == null || older === 0) return null;
+  return ((newer - older) / older) * 100;
+}
+
+function deltaCell(pct) {
+  if (pct === null) return '<span class="delta flat">—</span>';
+  const cls = pct > 0.05 ? 'up' : pct < -0.05 ? 'down' : 'flat';
+  const sign = pct > 0 ? '+' : '';
+  return `<span class="delta ${cls}">${sign}${pct.toFixed(1)}%</span>`;
+}
+
+async function loadData() {
+  const status = document.getElementById('status');
+  try {
+    const [latestRes, historyRes] = await Promise.all([
+      fetch(`${DATA_DIR}/latest.json?t=${Date.now()}`),
+      fetch(`${DATA_DIR}/history.csv?t=${Date.now()}`)
+    ]);
+
+    if (!latestRes.ok || !historyRes.ok) throw new Error('data files not found yet');
+
+    const latest = await latestRes.json();
+    const historyText = await historyRes.text();
+    parseHistory(historyText);
+    render(latest);
+    status.style.display = 'none';
+    document.getElementById('ledger').style.display = 'table';
+  } catch (err) {
+    status.innerHTML = emptyStateHTML();
+  }
+}
+
+function emptyStateHTML() {
+  return `<div class="empty-state">
+    No data yet. Once the daily GitHub Action runs (or you trigger it manually
+    from the Actions tab), <code>docs/data/latest.json</code> and
+    <code>docs/data/history.csv</code> will populate and this page will
+    refresh automatically on next load.
+  </div>`;
+}
+
+function parseHistory(csvText) {
+  const lines = csvText.trim().split('\n');
+  if (lines.length < 2) return;
+  const header = lines[0].split(',');
+  historyByCard = {};
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(',');
+    const row = {};
+    header.forEach((h, idx) => row[h] = cols[idx]);
+    if (row.condition !== 'Near Mint') continue; // keep the dashboard to one series per card
+    if (!historyByCard[row.tcgPlayerId]) historyByCard[row.tcgPlayerId] = [];
+    historyByCard[row.tcgPlayerId].push({
+      date: row.date,
+      price: row.price === '' ? null : Number(row.price),
+      volume: row.volume === '' ? null : Number(row.volume),
+    });
+  }
+  Object.values(historyByCard).forEach(series => series.sort((a, b) => a.date.localeCompare(b.date)));
+}
+
+function render(latest) {
+  const meta = latest._meta || {};
+  document.getElementById('run-meta').innerHTML = meta.lastRun
+    ? `last run <span class="credits">${new Date(meta.lastRun).toISOString().replace('T', ' ').slice(0, 16)} UTC</span> · ${meta.creditsUsedThisRun ?? '—'} credits used`
+    : '';
+
+  const cards = Object.entries(latest).filter(([k]) => k !== '_meta');
+  const tbody = document.getElementById('ledger-body');
+  tbody.innerHTML = '';
+
+  cards.sort((a, b) => (b[1].market || 0) - (a[1].market || 0));
+
+  for (const [tcgId, card] of cards) {
+    const series = historyByCard[tcgId] || [];
+    const last = series[series.length - 1];
+    const dayAgo = series[series.length - 2];
+    const weekAgo = series.length >= 7 ? series[series.length - 7] : series[0];
+
+    const oneDay = last && dayAgo ? pctDelta(last.price, dayAgo.price) : null;
+    const sevenDay = last && weekAgo ? pctDelta(last.price, weekAgo.price) : null;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="name">${card.name || card.label}</td>
+      <td class="set">${card.setName || ''}</td>
+      <td class="price num">${fmtMoney(card.market)}</td>
+      <td class="delta num">${deltaCell(oneDay)}</td>
+      <td class="delta num">${deltaCell(sevenDay)}</td>
+    `;
+    tr.addEventListener('click', () => showDetail(tcgId, card));
+    tbody.appendChild(tr);
+  }
+
+  if (cards.length) showDetail(cards[0][0], cards[0][1]);
+}
+
+function showDetail(tcgId, card) {
+  document.querySelectorAll('#ledger-body tr').forEach(r => r.classList.remove('active'));
+  const rows = [...document.querySelectorAll('#ledger-body tr')];
+  const idx = Object.keys(historyByCard).indexOf; // no-op guard
+  rows.forEach(r => {
+    if (r.firstChild.textContent === (card.name || card.label)) r.classList.add('active');
+  });
+
+  const detail = document.getElementById('detail');
+  detail.classList.add('open');
+  document.getElementById('detail-name').textContent = card.name || card.label;
+  document.getElementById('detail-sub').textContent =
+    `${card.setName || 'Unknown set'} · ${card.primaryPrinting || ''} · Near Mint`;
+
+  const series = historyByCard[tcgId] || [];
+  const ctx = document.getElementById('chart').getContext('2d');
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: series.map(p => p.date),
+      datasets: [{
+        label: 'Market price (Near Mint)',
+        data: series.map(p => p.price),
+        borderColor: '#d8a93b',
+        backgroundColor: 'rgba(216,169,59,0.12)',
+        fill: true,
+        tension: 0.25,
+        pointRadius: 2,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { ticks: { color: '#8b8e9e' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#8b8e9e' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      },
+      plugins: {
+        legend: { labels: { color: '#8b8e9e', font: { family: 'IBM Plex Mono' } } },
+      }
+    }
+  });
+}
+
+loadData();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+name: Daily price update
+
+on:
+  schedule:
+    # 7:10 AM UTC daily -- after upstream's once-a-day price refresh.
+    # NOTE: GitHub disables scheduled workflows on repos with no activity
+    # for 60 days. Any commit (even unrelated) resets that clock; this
+    # workflow's own data commits count, so once it's running it stays
+    # running on its own.
+    - cron: "10 7 * * *"
+  workflow_dispatch: {}   # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write   # needed so the workflow can commit updated data files
+
+concurrency:
+  group: price-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch latest card prices
+        env:
+          PPT_API_KEY: ${{ secrets.PPT_API_KEY }}
+        run: python scripts/fetch_prices.py
+
+      - name: Commit and push updated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: daily price update"
+          file_pattern: "docs/data/*.json docs/data/*.csv"
+          commit_user_name: "price-tracker-bot"
+          commit_user_email: "actions@users.noreply.github.com"
