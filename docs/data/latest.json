@@ -1,0 +1,384 @@
+{
+  "102804": {
+    "label": "Latios - XY65",
+    "lastUpdated": "2026-09-12T01:28:09.858645+00:00",
+    "market": 16.93,
+    "name": "Latios - XY65",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 102804
+  },
+  "108599": {
+    "label": "Rayquaza EX (Shiny)",
+    "lastUpdated": "2026-09-12T01:28:04.026733+00:00",
+    "market": 212.42,
+    "name": "Rayquaza EX (Shiny)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108599
+  },
+  "108602": {
+    "label": "Latios EX",
+    "lastUpdated": "2026-09-12T01:28:08.700861+00:00",
+    "market": 16.6,
+    "name": "Latios EX",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108602
+  },
+  "108603": {
+    "label": "Rayquaza EX (XY73)",
+    "lastUpdated": "2026-09-12T01:28:01.731580+00:00",
+    "market": 41.5,
+    "name": "Rayquaza EX (XY73)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108603
+  },
+  "108608": {
+    "label": "Latias (Full Art Promo)",
+    "lastUpdated": "2026-09-12T01:28:07.552910+00:00",
+    "market": 86.07,
+    "name": "Latias (Full Art Promo)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108608
+  },
+  "108609": {
+    "label": "Latios (Full Art Promo)",
+    "lastUpdated": "2026-09-12T01:28:06.391849+00:00",
+    "market": 128.45,
+    "name": "Latios (Full Art Promo)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108609
+  },
+  "108614": {
+    "label": "Pikachu EX - XY84",
+    "lastUpdated": "2026-09-12T01:27:40.703307+00:00",
+    "market": 79.84,
+    "name": "Pikachu EX - XY84",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108614
+  },
+  "108619": {
+    "label": "Pikachu (Collector Chest)",
+    "lastUpdated": "2026-09-12T01:27:39.521480+00:00",
+    "market": 30.61,
+    "name": "Pikachu (Collector Chest)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 108619
+  },
+  "114004": {
+    "label": "Pikachu",
+    "lastUpdated": "2026-09-12T01:27:38.370251+00:00",
+    "market": 194.28,
+    "name": "Pikachu",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 114004
+  },
+  "114006": {
+    "label": "Mew - XY110",
+    "lastUpdated": "2026-09-12T01:27:52.300575+00:00",
+    "market": 139.69,
+    "name": "Mew - XY110",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 114006
+  },
+  "117267": {
+    "label": "Charizard EX - XY121",
+    "lastUpdated": "2026-09-12T01:27:37.207487+00:00",
+    "market": 194.39,
+    "name": "Charizard EX - XY121",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 117267
+  },
+  "121950": {
+    "label": "Lugia",
+    "lastUpdated": "2026-09-12T01:28:17.935563+00:00",
+    "market": 49.08,
+    "name": "Lugia",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 121950
+  },
+  "123434": {
+    "label": "Mew EX - XY126",
+    "lastUpdated": "2026-09-12T01:27:51.135821+00:00",
+    "market": 245.86,
+    "name": "Mew EX - XY126",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 123434
+  },
+  "123436": {
+    "label": "Pikachu EX - XY124",
+    "lastUpdated": "2026-09-12T01:27:45.533628+00:00",
+    "market": 484.03,
+    "name": "Pikachu EX - XY124",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 123436
+  },
+  "123454": {
+    "label": "Pikachu EX - XY174",
+    "lastUpdated": "2026-09-12T01:27:43.224626+00:00",
+    "market": 29.84,
+    "name": "Pikachu EX - XY174",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 123454
+  },
+  "127135": {
+    "label": "Mew - XY192",
+    "lastUpdated": "2026-09-12T01:27:49.036942+00:00",
+    "market": 109.37,
+    "name": "Mew - XY192",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 127135
+  },
+  "127434": {
+    "label": "Pikachu - XY202 (Pokemon League)",
+    "lastUpdated": "2026-09-12T01:27:42.056155+00:00",
+    "market": 53.53,
+    "name": "Pikachu - XY202 (Pokemon League)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 127434
+  },
+  "147232": {
+    "label": "Rayquaza EX - XY66",
+    "lastUpdated": "2026-09-12T01:28:05.231918+00:00",
+    "market": 19.44,
+    "name": "Rayquaza EX - XY66",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 147232
+  },
+  "148428": {
+    "label": "Shining Lugia - SM82",
+    "lastUpdated": "2026-09-12T01:28:23.687151+00:00",
+    "market": 112.04,
+    "name": "Shining Lugia - SM82",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 148428
+  },
+  "152607": {
+    "label": "Latios - SM88",
+    "lastUpdated": "2026-09-12T01:28:12.167489+00:00",
+    "market": 12.43,
+    "name": "Latios - SM88",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 152607
+  },
+  "152609": {
+    "label": "Latias - SM87",
+    "lastUpdated": "2026-09-12T01:28:13.331513+00:00",
+    "market": 13.28,
+    "name": "Latias - SM87",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 152609
+  },
+  "175563": {
+    "label": "Latios - SM136",
+    "lastUpdated": "2026-09-12T01:28:14.493969+00:00",
+    "market": 13.09,
+    "name": "Latios - SM136",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 175563
+  },
+  "175564": {
+    "label": "Latios - SM135",
+    "lastUpdated": "2026-09-12T01:28:15.645964+00:00",
+    "market": 12.07,
+    "name": "Latias - SM135",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 175564
+  },
+  "197854": {
+    "label": "Mew - SM215",
+    "lastUpdated": "2026-09-12T01:27:54.776360+00:00",
+    "market": 25.04,
+    "name": "Mew - SM215",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 197854
+  },
+  "197856": {
+    "label": "Mewtwo & Mew GX - SM191",
+    "lastUpdated": "2026-09-12T01:27:55.939724+00:00",
+    "market": 386,
+    "name": "Mewtwo & Mew GX - SM191",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 197856
+  },
+  "198772": {
+    "label": "Pikachu EX - XY174",
+    "lastUpdated": "2026-09-12T01:27:44.390365+00:00",
+    "market": 39.95,
+    "name": "Pikachu EX - XY174",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 198772
+  },
+  "211464": {
+    "label": "Rayquaza EX - XY69",
+    "lastUpdated": "2026-09-12T01:28:02.875640+00:00",
+    "market": 15.83,
+    "name": "Rayquaza EX - XY69",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 211464
+  },
+  "224363": {
+    "label": "Lugia - SWSH069 (Prerelease) [Staff]",
+    "lastUpdated": "2026-09-12T01:28:22.531254+00:00",
+    "market": 254.28,
+    "name": "Lugia - SWSH069 (Prerelease) [Staff]",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 224363
+  },
+  "224364": {
+    "label": "Lugia - SWSH069 (Prerelease)",
+    "lastUpdated": "2026-09-12T01:28:21.388427+00:00",
+    "market": 44.78,
+    "name": "Lugia - SWSH069 (Prerelease)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 224364
+  },
+  "253407": {
+    "label": "Latias - SWSH171 (Prerelease)",
+    "lastUpdated": "2026-09-12T01:28:11.014575+00:00",
+    "market": 5.07,
+    "name": "Latias - SWSH171 (Prerelease)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 253407
+  },
+  "284283": {
+    "label": "Pikachu VMAX",
+    "lastUpdated": "2026-09-12T01:27:47.880509+00:00",
+    "market": 114.13,
+    "name": "Pikachu VMAX",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 284283
+  },
+  "284302": {
+    "label": "Pikachu VMAX (Secret)",
+    "lastUpdated": "2026-09-12T01:27:46.721744+00:00",
+    "market": 25.97,
+    "name": "Pikachu VMAX (Secret)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 284302
+  },
+  "284303": {
+    "label": "Mew VMAX (Secret)",
+    "lastUpdated": "2026-09-12T01:27:53.451165+00:00",
+    "market": 30.07,
+    "name": "Mew VMAX (Secret)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 284303
+  },
+  "478027": {
+    "label": "Mew",
+    "lastUpdated": "2026-09-12T01:27:58.261698+00:00",
+    "market": 68.56,
+    "name": "Mew",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 478027
+  },
+  "505996": {
+    "label": "Lugia V - SWSH301",
+    "lastUpdated": "2026-09-12T01:28:19.099209+00:00",
+    "market": 19.68,
+    "name": "Lugia V - SWSH301",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 505996
+  },
+  "506006": {
+    "label": "Lugia V - SWSH301",
+    "lastUpdated": "2026-09-12T01:28:20.241633+00:00",
+    "market": 4.32,
+    "name": "Lugia V - SWSH301",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 506006
+  },
+  "87405": {
+    "label": "Mew (Prime)",
+    "lastUpdated": "2026-09-12T01:28:00.573532+00:00",
+    "market": 379.39,
+    "name": "Mew (Prime)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 87405
+  },
+  "87406": {
+    "label": "Mew - BW98",
+    "lastUpdated": "2026-09-12T01:27:59.406832+00:00",
+    "market": 499.99,
+    "name": "Mew - BW98",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 87406
+  },
+  "87413": {
+    "label": "Mew EX (Full Art)",
+    "lastUpdated": "2026-09-12T01:27:57.090388+00:00",
+    "market": 241.19,
+    "name": "Mew EX (Full Art)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 87413
+  },
+  "91614": {
+    "label": "Charizard EX - XY17 (XY Black Star Pro",
+    "lastUpdated": "2026-09-12T01:27:36.026773+00:00",
+    "market": 15.69,
+    "name": "Charizard EX - XY17 (XY Black Star Promos)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 91614
+  },
+  "96392": {
+    "label": "Charizard EX - XY29",
+    "lastUpdated": "2026-09-12T01:27:34.878050+00:00",
+    "market": 22.02,
+    "name": "Charizard EX - XY29",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 96392
+  },
+  "97706": {
+    "label": "Latios - HGSS11 (Cracked Ice Holo)",
+    "lastUpdated": "2026-09-12T01:28:16.793337+00:00",
+    "market": 82.78,
+    "name": "Latios - HGSS11 (Cracked Ice Holo)",
+    "primaryPrinting": "Holofoil",
+    "setName": null,
+    "tcgPlayerId": 97706
+  },
+  "_meta": {
+    "creditsUsedThisRun": 86,
+    "lastRun": "2026-09-12T01:28:24.688115+00:00"
+  }
+}
