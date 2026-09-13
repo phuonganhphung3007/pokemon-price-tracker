@@ -103,7 +103,16 @@ def extract_rows(payload: dict, tcg_player_id: int, label: str, debug: bool = Fa
         print(f"  DEBUG variants printings present: {list(variants.keys())}")
         print(f"  DEBUG conditions present: {list(conditions.keys())}")
         if primary_printing in variants:
-            print(f"  DEBUG conditions under variants['{primary_printing}']: {list(variants[primary_printing].keys())}")
+            printing_conditions = variants[primary_printing]
+            print(f"  DEBUG conditions under variants['{primary_printing}']: {list(printing_conditions.keys())}")
+            if "Near Mint" in printing_conditions:
+                nm = printing_conditions["Near Mint"]
+                print(f"  DEBUG keys under variants['{primary_printing}']['Near Mint']: {list(nm.keys()) if isinstance(nm, dict) else type(nm)}")
+                if isinstance(nm, dict):
+                    hist = nm.get("history")
+                    print(f"  DEBUG type of 'history': {type(hist)}, length: {len(hist) if hist is not None else 'N/A'}")
+                    if hist:
+                        print(f"  DEBUG first history point: {hist[0]}")
 
     rows = []
 
