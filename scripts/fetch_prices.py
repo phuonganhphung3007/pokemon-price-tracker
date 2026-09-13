@@ -83,7 +83,7 @@ class DailyLimitReached(Exception):
     pass
 
 
-def extract_rows(payload: dict, tcg_player_id: int, label: str) -> tuple[list[dict], dict]:
+def extract_rows(payload: dict, tcg_player_id: int, label: str, debug: bool = False) -> tuple[list[dict], dict]:
     """Returns (history_rows, latest_snapshot) for one card's API response."""
     card = payload.get("data")
     if isinstance(card, list):
@@ -95,11 +95,22 @@ def extract_rows(payload: dict, tcg_player_id: int, label: str) -> tuple[list[di
     primary_printing = prices.get("primaryPrinting")
 
     price_history = card.get("priceHistory", {}) or {}
+    variants = price_history.get("variants", {}) or {}
     conditions = price_history.get("conditions", {}) or {}
 
+    if debug:
+        print(f"  DEBUG priceHistory top-level keys: {list(price_history.keys())}")
+        print(f"  DEBUG variants printings present: {list(variants.keys())}")
+        print(f"  DEBUG conditions present: {list(conditions.keys())}")
+        if primary_printing in variants:
+            print(f"  DEBUG conditions under variants['{primary_printing}']: {list(variants[primary_printing].keys())}")
+
     rows = []
-    for condition, series in conditions.items():
-        for point in series.get("history", []) or []:
+
+    # Canonical source per docs: priceHistory.variants[printing][condition].history
+    printing_data = variants.get(primary_printing, {}) if primary_printing else {}
+    for condition, series in (printing_data or {}).items():
+        for point in (series or {}).get("history", []) or []:
             rows.append({
                 "date": point.get("date"),
                 "tcgPlayerId": tcg_player_id,
@@ -109,6 +120,21 @@ def extract_rows(payload: dict, tcg_player_id: int, label: str) -> tuple[list[di
                 "price": point.get("price"),
                 "volume": point.get("volume"),
             })
+
+    # Fallback: the flattened convenience view, in case variants[primaryPrinting]
+    # didn't resolve (e.g. printing name mismatch) but conditions did.
+    if not rows:
+        for condition, series in conditions.items():
+            for point in (series or {}).get("history", []) or []:
+                rows.append({
+                    "date": point.get("date"),
+                    "tcgPlayerId": tcg_player_id,
+                    "label": label,
+                    "printing": primary_printing,
+                    "condition": condition,
+                    "price": point.get("price"),
+                    "volume": point.get("volume"),
+                })
 
     snapshot = {
         "tcgPlayerId": tcg_player_id,
@@ -180,7 +206,7 @@ def main():
         total_credits_used += used_total or 0
         print(f"  OK. Credits used this call: {used_total}. Running total: {total_credits_used}")
 
-        rows, snapshot = extract_rows(payload, tcg_id, label)
+        rows, snapshot = extract_rows(payload, tcg_id, label, debug=(len(latest_snapshots) == 0))
         all_new_rows.extend(rows)
         latest_snapshots[str(tcg_id)] = snapshot
 
