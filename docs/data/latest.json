@@ -73,7 +73,7 @@
   },
   "114004": {
     "label": "Pikachu",
-    "lastUpdated": "2026-09-14T03:11:02.946094+00:00",
+    "lastUpdated": "2026-09-14T09:02:56.551405+00:00",
     "market": 198.78,
     "name": "Pikachu",
     "primaryPrinting": "Holofoil",
@@ -91,7 +91,7 @@
   },
   "117267": {
     "label": "Charizard EX - XY121",
-    "lastUpdated": "2026-09-14T03:11:01.697062+00:00",
+    "lastUpdated": "2026-09-14T09:02:55.402472+00:00",
     "market": 190.56,
     "name": "Charizard EX - XY121",
     "primaryPrinting": "Holofoil",
@@ -352,7 +352,7 @@
   },
   "91614": {
     "label": "Charizard EX - XY17 (XY Black Star Pro",
-    "lastUpdated": "2026-09-14T03:11:00.377632+00:00",
+    "lastUpdated": "2026-09-14T09:02:54.095828+00:00",
     "market": 15.62,
     "name": "Charizard EX - XY17 (XY Black Star Promos)",
     "primaryPrinting": "Holofoil",
@@ -361,7 +361,7 @@
   },
   "96392": {
     "label": "Charizard EX - XY29",
-    "lastUpdated": "2026-09-14T03:10:59.052192+00:00",
+    "lastUpdated": "2026-09-14T09:02:52.927738+00:00",
     "market": 22.57,
     "name": "Charizard EX - XY29",
     "primaryPrinting": "Holofoil",
@@ -378,7 +378,7 @@
     "tcgPlayerId": 97706
   },
   "_meta": {
-    "creditsUsedThisRun": 86,
-    "lastRun": "2026-09-14T03:11:50.846082+00:00"
+    "creditsUsedThisRun": 10,
+    "lastRun": "2026-09-14T09:02:57.700197+00:00"
   }
 }
