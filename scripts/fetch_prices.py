@@ -83,7 +83,7 @@ class DailyLimitReached(Exception):
     pass
 
 
-def extract_rows(payload: dict, tcg_player_id: int, label: str, debug: bool = False) -> tuple[list[dict], dict]:
+def extract_rows(payload: dict, tcg_player_id: int, label: str) -> tuple[list[dict], dict]:
     """Returns (history_rows, latest_snapshot) for one card's API response."""
     card = payload.get("data")
     if isinstance(card, list):
@@ -95,55 +95,20 @@ def extract_rows(payload: dict, tcg_player_id: int, label: str, debug: bool = Fa
     primary_printing = prices.get("primaryPrinting")
 
     price_history = card.get("priceHistory", {}) or {}
-    variants = price_history.get("variants", {}) or {}
     conditions = price_history.get("conditions", {}) or {}
 
-    if debug:
-        print(f"  DEBUG priceHistory top-level keys: {list(price_history.keys())}")
-        print(f"  DEBUG variants printings present: {list(variants.keys())}")
-        print(f"  DEBUG conditions present: {list(conditions.keys())}")
-        if primary_printing in variants:
-            printing_conditions = variants[primary_printing]
-            print(f"  DEBUG conditions under variants['{primary_printing}']: {list(printing_conditions.keys())}")
-            if "Near Mint" in printing_conditions:
-                nm = printing_conditions["Near Mint"]
-                print(f"  DEBUG keys under variants['{primary_printing}']['Near Mint']: {list(nm.keys()) if isinstance(nm, dict) else type(nm)}")
-                if isinstance(nm, dict):
-                    hist = nm.get("history")
-                    print(f"  DEBUG type of 'history': {type(hist)}, length: {len(hist) if hist is not None else 'N/A'}")
-                    if hist:
-                        print(f"  DEBUG first history point: {hist[0]}")
-
     rows = []
-
-    # Canonical source per docs: priceHistory.variants[printing][condition].history
-    printing_data = variants.get(primary_printing, {}) if primary_printing else {}
-    for condition, series in (printing_data or {}).items():
-        for point in (series or {}).get("history", []) or []:
+    for condition, series in conditions.items():
+        for point in series.get("history", []) or []:
             rows.append({
                 "date": point.get("date"),
                 "tcgPlayerId": tcg_player_id,
                 "label": label,
                 "printing": primary_printing,
                 "condition": condition,
-                "price": point.get("price"),
+                "price": point.get("price") if point.get("price") is not None else point.get("market"),
                 "volume": point.get("volume"),
             })
-
-    # Fallback: the flattened convenience view, in case variants[primaryPrinting]
-    # didn't resolve (e.g. printing name mismatch) but conditions did.
-    if not rows:
-        for condition, series in conditions.items():
-            for point in (series or {}).get("history", []) or []:
-                rows.append({
-                    "date": point.get("date"),
-                    "tcgPlayerId": tcg_player_id,
-                    "label": label,
-                    "printing": primary_printing,
-                    "condition": condition,
-                    "price": point.get("price"),
-                    "volume": point.get("volume"),
-                })
 
     snapshot = {
         "tcgPlayerId": tcg_player_id,
@@ -154,6 +119,7 @@ def extract_rows(payload: dict, tcg_player_id: int, label: str, debug: bool = Fa
         "setName": (card.get("set") or {}).get("name") if isinstance(card.get("set"), dict) else None,
         "lastUpdated": datetime.now(timezone.utc).isoformat(),
     }
+    print(rows, snapshot)
     return rows, snapshot
 
 
@@ -215,7 +181,7 @@ def main():
         total_credits_used += used_total or 0
         print(f"  OK. Credits used this call: {used_total}. Running total: {total_credits_used}")
 
-        rows, snapshot = extract_rows(payload, tcg_id, label, debug=(len(latest_snapshots) == 0))
+        rows, snapshot = extract_rows(payload, tcg_id, label)
         all_new_rows.extend(rows)
         latest_snapshots[str(tcg_id)] = snapshot
 
