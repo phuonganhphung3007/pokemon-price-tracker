@@ -55,7 +55,7 @@
   },
   "108614": {
     "label": "Pikachu EX - XY84",
-    "lastUpdated": "2026-09-15T02:53:50.515377+00:00",
+    "lastUpdated": "2026-09-15T12:38:25.197769+00:00",
     "market": 79.84,
     "name": "Pikachu EX - XY84",
     "primaryPrinting": "Holofoil",
@@ -64,7 +64,7 @@
   },
   "108619": {
     "label": "Pikachu (Collector Chest)",
-    "lastUpdated": "2026-09-15T02:53:49.333344+00:00",
+    "lastUpdated": "2026-09-15T12:38:23.986256+00:00",
     "market": 30.61,
     "name": "Pikachu (Collector Chest)",
     "primaryPrinting": "Holofoil",
@@ -73,7 +73,7 @@
   },
   "114004": {
     "label": "Pikachu",
-    "lastUpdated": "2026-09-15T02:53:48.137205+00:00",
+    "lastUpdated": "2026-09-15T12:38:22.773152+00:00",
     "market": 198.78,
     "name": "Pikachu",
     "primaryPrinting": "Holofoil",
@@ -91,7 +91,7 @@
   },
   "117267": {
     "label": "Charizard EX - XY121",
-    "lastUpdated": "2026-09-15T02:53:46.978366+00:00",
+    "lastUpdated": "2026-09-15T12:38:21.543425+00:00",
     "market": 190.56,
     "name": "Charizard EX - XY121",
     "primaryPrinting": "Holofoil",
@@ -352,7 +352,7 @@
   },
   "91614": {
     "label": "Charizard EX - XY17 (XY Black Star Pro",
-    "lastUpdated": "2026-09-15T02:53:45.810667+00:00",
+    "lastUpdated": "2026-09-15T12:38:20.341859+00:00",
     "market": 15.62,
     "name": "Charizard EX - XY17 (XY Black Star Promos)",
     "primaryPrinting": "Holofoil",
@@ -361,7 +361,7 @@
   },
   "96392": {
     "label": "Charizard EX - XY29",
-    "lastUpdated": "2026-09-15T02:53:44.609217+00:00",
+    "lastUpdated": "2026-09-15T12:38:19.114971+00:00",
     "market": 22.64,
     "name": "Charizard EX - XY29",
     "primaryPrinting": "Holofoil",
@@ -378,7 +378,7 @@
     "tcgPlayerId": 97706
   },
   "_meta": {
-    "creditsUsedThisRun": 86,
-    "lastRun": "2026-09-15T02:54:34.687134+00:00"
+    "creditsUsedThisRun": 14,
+    "lastRun": "2026-09-15T12:38:26.490832+00:00"
   }
 }
