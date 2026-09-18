@@ -600,9 +600,9 @@ date,tcgPlayerId,label,printing,condition,price,volume
 2026-09-16T00:00:00.000Z,152609,Latias - SM87,Holofoil,Lightly Played,5.2,
 2026-09-16T00:00:00.000Z,152609,Latias - SM87,Holofoil,Moderately Played,3.28,
 2026-09-16T00:00:00.000Z,152609,Latias - SM87,Holofoil,Near Mint,13.45,
-2026-09-16T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Lightly Played,5.27,
+2026-09-16T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Lightly Played,5.22,1
 2026-09-16T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Moderately Played,3.52,
-2026-09-16T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Near Mint,5.07,
+2026-09-16T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Near Mint,4.99,1
 2026-09-16T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Damaged,22.6,
 2026-09-16T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Heavily Played,26.65,
 2026-09-16T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Lightly Played,66.5,
@@ -786,6 +786,9 @@ date,tcgPlayerId,label,printing,condition,price,volume
 2026-09-17T00:00:00.000Z,152609,Latias - SM87,Holofoil,Lightly Played,5.2,1
 2026-09-17T00:00:00.000Z,152609,Latias - SM87,Holofoil,Moderately Played,3.28,
 2026-09-17T00:00:00.000Z,152609,Latias - SM87,Holofoil,Near Mint,13.68,1
+2026-09-17T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Lightly Played,5.22,
+2026-09-17T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Moderately Played,3.52,
+2026-09-17T00:00:00.000Z,253407,Latias - SWSH171 (Prerelease),Holofoil,Near Mint,4.99,
 2026-09-17T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Damaged,22.6,
 2026-09-17T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Heavily Played,26.65,
 2026-09-17T00:00:00.000Z,108609,Latios (Full Art Promo),Holofoil,Lightly Played,66.5,
@@ -830,8 +833,11 @@ date,tcgPlayerId,label,printing,condition,price,volume
 2026-09-17T00:00:00.000Z,224363,Lugia - SWSH069 (Prerelease) [Staff],Holofoil,Near Mint,254.28,
 2026-09-17T00:00:00.000Z,505996,Lugia V - SWSH301,Holofoil,Heavily Played,5.31,
 2026-09-17T00:00:00.000Z,505996,Lugia V - SWSH301,Holofoil,Lightly Played,9.78,
+2026-09-17T00:00:00.000Z,506006,Lugia V - SWSH301,Holofoil,Lightly Played,2.6,
 2026-09-17T00:00:00.000Z,505996,Lugia V - SWSH301,Holofoil,Moderately Played,7.41,
+2026-09-17T00:00:00.000Z,506006,Lugia V - SWSH301,Holofoil,Moderately Played,2.42,
 2026-09-17T00:00:00.000Z,505996,Lugia V - SWSH301,Holofoil,Near Mint,18.5,
+2026-09-17T00:00:00.000Z,506006,Lugia V - SWSH301,Holofoil,Near Mint,4.39,
 2026-09-17T00:00:00.000Z,478027,Mew,Holofoil,Damaged,33.92,
 2026-09-17T00:00:00.000Z,478027,Mew,Holofoil,Heavily Played,42.37,
 2026-09-17T00:00:00.000Z,478027,Mew,Holofoil,Lightly Played,57.76,
